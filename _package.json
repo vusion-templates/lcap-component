@@ -1,0 +1,84 @@
+{
+  "name": "<%= name %>",
+  "description": "",
+  "version": "0.1.0",
+  "main": "./index.js",
+  "author": "",
+  "repository": "",
+  "homepage": "",
+  "license": "MIT",
+  "keywords": [
+    "lcap",
+    "material",
+    "component"
+  ],
+  "scripts":
+<%
+print(JSON.stringify(inVusionProject ? {
+  "dev": "../../../node_modules/.bin/vue-cli-service doc --port 9090",
+  "build:theme": "../../../node_modules/.bin/vue-cli-service library-build --dest dist-theme",
+  "build:raw": "../../../node_modules/.bin/vue-cli-service library-build --vusion-mode raw --dest dist-raw",
+  "build:doc": "../../../node_modules/.bin/vue-cli-service doc-build",
+  "screenshot": "lcap screenshot public/index.html#examples --code-example --max-count 10 --smart-crop --package",
+  "deploy": "lcap deploy && lcap deploy screenshots",
+  "lcap": "lcap lcap",
+  "prepublishOnly": "npm run build:theme && npm run build:raw && npm run build:doc && npm run screenshot && npm run lcap && lcap readme && lcap vetur",
+  "release": "lcap publish"
+} : {
+  "dev": "vue-cli-service doc --port 9090",
+  "build:theme": "vue-cli-service library-build --dest dist-theme",
+  "build:raw": "vue-cli-service library-build --vusion-mode raw --dest dist-raw",
+  "build:doc": "vue-cli-service doc-build",
+  "lcap": "lcap lcap",
+  "screenshot": "lcap screenshot public/index.html#examples --code-example --max-count 10 --smart-crop --package",
+  "deploy": "lcap deploy && lcap deploy screenshots",
+  "prepublishOnly": "npm run build:theme && npm run build:raw && npm run build:doc && npm run screenshot && npm run lcap && lcap readme && lcap vetur",
+  "release": "lcap publish"
+}, null, 2));
+%>,
+  "vuePlugins":
+<%
+print(JSON.stringify(inVusionProject ? {
+  "resolveFrom": "../../../"
+} : {}, null, 2));
+%>,
+  "babel":
+<%
+print(JSON.stringify(inVusionProject ? {
+  presets: [
+    "@vue/babel-preset-app"
+  ],
+} : {}, null, 2));
+%>,
+  "vusion": {
+    "type": "component",
+    "title": "<%= title %>",
+    "category": "<%= category %>",
+    "base": "vue",
+    "ui": "cloud-ui.vusion",
+    "screenshots": [],
+    "team": "",
+    "access": "public"
+  },
+  "dependencies": {},
+  "devDependencies":
+<%
+print(JSON.stringify(inVusionProject ? {} : {
+  "@vue/cli-service": "^4.4.1",
+  "core-js": "^3.6.5",
+  "vue-cli-plugin-vusion": "^0.12.28",
+  "vue": "^2.6.10",
+  "cloud-ui.vusion": "^0.11.20"
+}, null, 2));
+%>,
+  "peerDependencies": {
+    "@vue/cli-service": "^4.4.1",
+    "vue-cli-plugin-vusion": "^0.12.28",
+    "vue": "^2.6.10",
+    "cloud-ui.vusion": "^0.11.20"
+  },
+  "vetur": {
+    "tags": "./vetur/tags.json",
+    "attributes": "./vetur/attributes.json"
+  }
+}
