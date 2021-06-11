@@ -30,10 +30,11 @@ print(JSON.stringify(inVusionProject ? {
   "build:theme": "vue-cli-service library-build --dest dist-theme",
   "build:raw": "vue-cli-service library-build --vusion-mode raw --dest dist-raw",
   "build:doc": "vue-cli-service doc-build",
-  "lcap": "lcap lcap",
-  "screenshot": "lcap screenshot public/index.html#examples --code-example --max-count 10 --smart-crop --package",
+  "build": "npm run build:theme && npm run build:raw && npm run build:doc",
+  "usage": "lcap usage",
+  "screenshot": "lcap screenshot public/index.html#blocks --code-example --max-count 10 --smart-crop --package",
   "deploy": "lcap deploy && lcap deploy screenshots",
-  "prepublishOnly": "npm run build:theme && npm run build:raw && npm run build:doc && npm run screenshot && npm run lcap && lcap readme && lcap vetur",
+  "prepublishOnly": "npm run build && npm run screenshot && lcap usage && lcap readme && lcap vetur",
   "release": "lcap publish"
 }, null, 2));
 %>,
