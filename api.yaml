@@ -1,7 +1,7 @@
 - name: <%= tagName %>
   title: <%= title %>
   description: 请在这里添加描述
-  labels: [demo]
+  labels: [<%= category %>]
   icon: default
   attrs:
     - name: value
