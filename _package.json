@@ -24,7 +24,7 @@ print(JSON.stringify(inVusionProject ? {
   "deploy": "lcap deploy && lcap deploy dist-theme && lcap deploy screenshots",
   "usage": "lcap usage",
   "prepublishOnly": "npm run build && npm run screenshot && lcap usage && lcap readme && lcap vetur",
-  "release": "npm run prepublishOnly && lcap publish"
+  "release": "lcap publish"
 } : {
   "dev": "vue-cli-service doc --port 9090",
   "build:theme": "vue-cli-service library-build --dest dist-theme",
@@ -35,7 +35,7 @@ print(JSON.stringify(inVusionProject ? {
   "screenshot": "lcap screenshot public/index.html#blocks --code-example --max-count 10 --smart-crop --package",
   "deploy": "lcap deploy && lcap deploy dist-theme && lcap deploy screenshots",
   "prepublishOnly": "npm run build && npm run screenshot && lcap usage && lcap readme && lcap vetur",
-  "release": "npm run prepublishOnly && lcap publish"
+  "release": "lcap publish"
 }, null, 2));
 %>,
   "vuePlugins":
